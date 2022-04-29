@@ -66,3 +66,7 @@ insert into event (eventId,bookingName,bookingEmail,eventStartTime,eventDuration
 values (2,'SomsriRakdee(SJ-3)','somsri.rak@mail.kmutt.ac.th','2022-05-27 9:30:00',30,'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน',1);
 insert into event (eventId,bookingName,bookingEmail,eventStartTime,eventDuration,eventCategoryId)
 values (3,'สมเกียรติ ขยันเรียน กลุ่ม TT-4','somkiat.kay@kmutt.ac.th','2022-05-23 16:30:00',15,3);
+insert into event (eventId,bookingName,bookingEmail,eventStartTime,eventDuration,eventCategoryId)
+values (4,'หิวข้าวงับ','eiei.za@kmutt.ac.th','2022-05-29 8:30:00',15,1);
+insert into event (eventId,bookingName,bookingEmail,eventStartTime,eventDuration,eventCategoryId)
+values (5,'test','test.test@kmutt.ac.th','2022-05-30 01:30:00',20,2);
