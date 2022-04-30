@@ -70,3 +70,7 @@ insert into event (eventId,bookingName,bookingEmail,eventStartTime,eventDuration
 values (4,'หิวข้าวงับ','eiei.za@kmutt.ac.th','2022-05-29 8:30:00',15,1);
 insert into event (eventId,bookingName,bookingEmail,eventStartTime,eventDuration,eventCategoryId)
 values (5,'test','test.test@kmutt.ac.th','2022-05-30 01:30:00',20,2);
+
+create user 'root'@'%' identified by 'rootroot' ;
+grant all privileges on *.* to 'root'@'%' ;
+flush privileges;
