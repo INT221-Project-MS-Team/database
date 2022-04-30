@@ -1,3 +1,3 @@
-docker build -t clinic-db-img .
+sudo docker pull siraom15/clinic-database-image
 
-docker run -d -p 443:3306 --name clinic-db-container clinic-db-img
+sudo docker run -d -p 443:3306 --rm --name database siraom15/clinic-database-image
