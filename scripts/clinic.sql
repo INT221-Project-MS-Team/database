@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 DROP SCHEMA IF EXISTS `clinic` ;
 
 
-CREATE SCHEMA IF NOT EXISTS `clinic` DEFAULT CHARACTER SET utf8 ;
+CREATE SCHEMA IF NOT EXISTS `clinic` DEFAULT CHARACTER SET utf8mb4 ;
 USE `clinic` ;
 
 
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event_category` (
   `eventDuration` INT NOT NULL,
   PRIMARY KEY (`eventCategoryId`),
   UNIQUE INDEX `eventCatagoryName_UNIQUE` (`eventCategoryName` ASC) VISIBLE)
-ENGINE = InnoDB;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
     REFERENCES `clinic`.`event_category` (`eventCategoryId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
