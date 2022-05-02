@@ -63,6 +63,6 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (5, 'test', 'test.test@kmutt.ac.th', '2022-05-30 01:30:00', 20, NULL, 2);
 
 
-create user 'root'@'%' identified by 'rootroot' ;
+create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
 flush privileges;
