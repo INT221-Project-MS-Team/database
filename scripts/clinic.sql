@@ -63,14 +63,14 @@ INSERT INTO `event_category` (`eventCategoryId`, `eventCategoryName`, `eventCate
 (5, 'Server-side Clinic', NULL, 30);
 
 INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`, `eventDuration`, `eventNotes`, `eventCategoryId`) VALUES
-(1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 13:30:00', 30, NULL, 2),
-(2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 09:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
-(3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 16:30:00', 15, NULL, 3),
-(4, 'หิวข้าวงับ', 'eiei.za@kmutt.ac.th', '2022-05-29 08:30:00', 15, NULL, 1),
-(5, 'test', 'test.test@kmutt.ac.th', '2022-05-30 01:30:00', 20, NULL, 2),
-(6, 'อิอิ haha', 'test.test@kmutt.ac.th', '2022-04-19 04:30:00', 20, 'Hello World', 2),
-(7, 'Peter Parker', 'peter.parker@kmutt.ac.th', '2022-01-19 04:30:00', 20, 'NONONO', 2),
-(8, 'อิอิ haha', 'test.test@kmutt.ac.th', '2022-03-22 05:43:00', 20, NULL, 5);
+(1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2),
+(2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
+(3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3),
+(4, 'หิวข้าวงับ', 'eiei.za@kmutt.ac.th', '2022-05-29 18:30:00', 15, NULL, 1),
+(5, 'test', 'test.test@kmutt.ac.th', '2022-05-30 18:30:00', 20, NULL, 2),
+(6, 'อิอิ haha', 'test.test@kmutt.ac.th', '2022-04-19 21:30:00', 20, 'Hello World', 2),
+(7, 'Peter Parker', 'peter.parker@kmutt.ac.th', '2022-01-19 21:30:00', 20, 'NONONO', 2),
+(8, 'อิอิ haha', 'test.test@kmutt.ac.th', '2022-03-22 22:43:00', 20, NULL, 5);
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
