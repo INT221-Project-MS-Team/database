@@ -21,7 +21,7 @@ USE `clinic` ;
 DROP TABLE IF EXISTS `clinic`.`event_category` ;
 
 CREATE TABLE IF NOT EXISTS `clinic`.`event_category` (
-  `eventCategoryId` INT NOT NULL,
+  `eventCategoryId` INT NOT NULL AUTO_INCREMENT,
   `eventCategoryName` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
   `eventCategoryDescription` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventDuration` INT NOT NULL,
@@ -34,7 +34,7 @@ ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 DROP TABLE IF EXISTS `clinic`.`event` ;
 
 CREATE TABLE IF NOT EXISTS `clinic`.`event` (
-  `eventId` INT NOT NULL,
+  `eventId` INT NOT NULL AUTO_INCREMENT,
   `bookingName` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
   `bookingEmail` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   `eventStartTime` DATETIME NOT NULL,
