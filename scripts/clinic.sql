@@ -51,6 +51,24 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
+DROP TABLE IF EXISTS `clinic`.`user` ;
+
+CREATE TABLE IF NOT EXISTS `clinic`.`user` (
+  `userId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL,
+  `updatedOn` TIMESTAMP NOT NULL,
+  PRIMARY KEY (`userId`))
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE UNIQUE INDEX `name_UNIQUE` ON `clinic`.`user` (`name` ASC) VISIBLE;
+
+CREATE UNIQUE INDEX `email_UNIQUE` ON `clinic`.`user` (`email` ASC) VISIBLE;
+
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -66,6 +84,12 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2),
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
+
+INSERT INTO `user` (`userId`,`name`,`email`,`role`,`createdOn`,`updatedOn`) VALUES
+(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th,admin','2022-08-01 07:00:00','2022-08-01 07:00:00'),
+(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','lecturer','2022-08-08 23:00:00','2022-08-08 23:00:00'),
+(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th','student','2022-08-08 23:00:01','2022-08-08 23:00:01'),
+(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th','student','2022-08-16 16:00:00','2022-08-16 16:00:00')
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
