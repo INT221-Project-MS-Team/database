@@ -25,6 +25,8 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event_category` (
   `eventCategoryName` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
   `eventCategoryDescription` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventDuration` INT NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`eventCategoryId`),
   UNIQUE INDEX `eventCatagoryName_UNIQUE` (`eventCategoryName` ASC) VISIBLE)
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,6 +43,8 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
   `eventDuration` INT NOT NULL,
   `eventNotes` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventCategoryId` INT NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`eventId`),
   INDEX `fk_event_event-catagory_idx` (`eventCategoryId` ASC) VISIBLE,
   CONSTRAINT `fk_event_event-catagory`
@@ -49,6 +53,24 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+DROP TABLE IF EXISTS `clinic`.`user` ;
+
+CREATE TABLE IF NOT EXISTS `clinic`.`user` (
+  `userId` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` ENUM('ADMIN', 'LECTURER', 'STUDENT') COLLATE utf8mb4_general_ci NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`userId`))
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE UNIQUE INDEX `name_UNIQUE` ON `clinic`.`user` (`name` ASC) VISIBLE;
+
+CREATE UNIQUE INDEX `email_UNIQUE` ON `clinic`.`user` (`email` ASC) VISIBLE;
+
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -66,6 +88,12 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2),
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
+
+INSERT INTO `user` (`userId`, `name`, `email`, `role`) VALUES
+(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', 'ADMIN'),
+(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','LECTURER'),
+(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th', 'STUDENT'),
+(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th', 'STUDENT');
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
