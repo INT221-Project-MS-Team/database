@@ -25,6 +25,8 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event_category` (
   `eventCategoryName` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
   `eventCategoryDescription` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventDuration` INT NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`eventCategoryId`),
   UNIQUE INDEX `eventCatagoryName_UNIQUE` (`eventCategoryName` ASC) VISIBLE)
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -41,6 +43,8 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
   `eventDuration` INT NOT NULL,
   `eventNotes` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventCategoryId` INT NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`eventId`),
   INDEX `fk_event_event-catagory_idx` (`eventCategoryId` ASC) VISIBLE,
   CONSTRAINT `fk_event_event-catagory`
@@ -58,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `clinic`.`user` (
   `name` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
   `email` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
   `role` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `createdOn` TIMESTAMP NOT NULL,
-  `updatedOn` TIMESTAMP NOT NULL,
+  `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userId`))
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -85,11 +89,11 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
 
-INSERT INTO `user` (`userId`,`name`,`email`,`role`,`createdOn`,`updatedOn`) VALUES
-(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th,admin','2022-08-01 07:00:00','2022-08-01 07:00:00'),
-(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','lecturer','2022-08-08 23:00:00','2022-08-08 23:00:00'),
-(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th','student','2022-08-08 23:00:01','2022-08-08 23:00:01'),
-(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th','student','2022-08-16 16:00:00','2022-08-16 16:00:00')
+INSERT INTO `user` (`userId`, `name`, `email`, `role`) VALUES
+(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', 'admin'),
+(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','lecturer'),
+(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th','student'),
+(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th','student');
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
