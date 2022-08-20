@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `clinic`.`user` (
   `userId` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) COLLATE utf8mb4_general_ci NOT NULL,
   `email` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `role` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `role` ENUM('ADMIN', 'LECTURER', 'STUDENT') COLLATE utf8mb4_general_ci NOT NULL,
   `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userId`))
@@ -90,10 +90,10 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
 
 INSERT INTO `user` (`userId`, `name`, `email`, `role`) VALUES
-(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', 'admin'),
-(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','lecturer'),
-(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th','student'),
-(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th','student');
+(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', 'ADMIN'),
+(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','LECTURER'),
+(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th', 'STUDENT'),
+(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th', 'STUDENT');
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
