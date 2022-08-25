@@ -90,11 +90,11 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
 
-INSERT INTO `user` (`userId`, `name`, `email`, `role`) VALUES
-(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', 'ADMIN'),
-(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th','LECTURER'),
-(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th', 'STUDENT'),
-(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th', 'STUDENT');
+INSERT INTO `user` (`userId`, `name`, `email`, `password`, `role`) VALUES
+(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$qzPNwlVKGLEi0sW8+91THw$4LWq4qOLZKZR3E5eLTIVMVLojgIN8Gveqlbo0jVi6QE', 'ADMIN'),
+(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$/Qyhp40vwOKDD0GfcGMxUg$XP4JQkHXP8VNx6UBA51EfNBV7AoU/QCi1toZLuPPXrs', 'LECTURER'),
+(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$uHVIqes1FEASJfuVh/7OWw$AB6Ub+PNwTe46LOvnIoOW0UAXohjvo7FLy/So7BO8uE', 'STUDENT'),
+(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$Pb8JElWpILgqaQyh1MLlSg$bUP1VQ5qI7v6qIqqO2Le6zuV/m4Rr54rKiDk3ge9AKU', 'STUDENT');
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
