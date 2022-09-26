@@ -49,16 +49,10 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
   `eventDuration` INT NOT NULL,
   `eventNotes` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventCategoryId` INT NOT NULL,
-  `userId` INT DEFAULT NULL,
   `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`eventId`),
   INDEX `fk_event_event-catagory_idx` (`eventCategoryId` ASC) VISIBLE,
-  CONSTRAINT `fk_event_user`
-    FOREIGN KEY (`userID`)
-    REFERENCES `clinic`.`user` (`userId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_event_event-catagory`
     FOREIGN KEY (`eventCategoryId`)
     REFERENCES `clinic`.`event_category` (`eventCategoryId`)
@@ -104,10 +98,10 @@ INSERT INTO `event_category` (`eventCategoryId`, `eventCategoryName`, `eventCate
 (4, 'Client-side Clinic', 'ตารางนัดหมายนี้ใช้สําหรับนัดหมาย client-side clinic ในวิชา INT221 integrated project I', 30, 2),
 (5, 'Server-side Clinic', NULL, 30, 2);
 
-INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`, `eventDuration`, `eventNotes`, `eventCategoryId`, `userId`) VALUES
-(1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2, NULL),
-(2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1, 4),
-(3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3, 3);
+INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`, `eventDuration`, `eventNotes`, `eventCategoryId`) VALUES
+(1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2),
+(2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
+(3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
 
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
