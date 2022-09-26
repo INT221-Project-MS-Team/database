@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
   `eventDuration` INT NOT NULL,
   `eventNotes` VARCHAR(500) COLLATE utf8mb4_general_ci NULL,
   `eventCategoryId` INT NOT NULL,
-  `userId` INT NOT NULL,
+  `userId` INT DEFAULT NULL,
   `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`eventId`),
@@ -105,7 +105,7 @@ INSERT INTO `event_category` (`eventCategoryId`, `eventCategoryName`, `eventCate
 (5, 'Server-side Clinic', NULL, 30, 2);
 
 INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`, `eventDuration`, `eventNotes`, `eventCategoryId`, `userId`) VALUES
-(1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2, 3),
+(1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2, NULL),
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1, 4),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3, 3);
 
