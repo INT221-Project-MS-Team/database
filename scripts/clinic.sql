@@ -76,11 +76,12 @@ CREATE UNIQUE INDEX `email_UNIQUE` ON `clinic`.`user` (`email` ASC) VISIBLE;
 DROP TABLE IF EXISTS `clinic`.`user_has_event_category` ;
 
 CREATE TABLE IF NOT EXISTS `clinic`.`user_has_event_category` (
+  `userHasEventCategoryId` INT NOT NULL AUTO_INCREMENT,
   `userId` INT NOT NULL,
   `eventCategoryId` INT NOT NULL,
   `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`userId`, `eventCategoryId`),
+  PRIMARY KEY (`userHasEventCategoryId`, `userId`, `eventCategoryId`),
   INDEX `fk_user_has_event_category_event_category1_idx` (`eventCategoryId` ASC) VISIBLE,
   INDEX `fk_user_has_event_category_user1_idx` (`userId` ASC) VISIBLE,
   CONSTRAINT `fk_user_has_event_category_user1`
@@ -122,11 +123,11 @@ INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`,
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
 
-INSERT INTO `user_has_event_category` (`userId`, `eventCategoryId`) VALUES
-(1, 2),
-(1, 5),
-(2, 5),
-(3, 2);
+INSERT INTO `user_has_event_category` (`userHasEventCategoryId`, `userId`, `eventCategoryId`) VALUES
+(1, 1, 2),
+(2, 1, 5),
+(3, 2, 5),
+(4, 3, 2);
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
