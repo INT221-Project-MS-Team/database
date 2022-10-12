@@ -45,11 +45,18 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
   `eventCategoryId` INT NOT NULL,
   `createdOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updatedOn` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `fileId` INT NULL DEFAULT NULL,
   PRIMARY KEY (`eventId`),
   INDEX `fk_event_event-catagory_idx` (`eventCategoryId` ASC) VISIBLE,
+  INDEX `fk_event_files1_idx` (`fileId` ASC) VISIBLE,
   CONSTRAINT `fk_event_event-catagory`
     FOREIGN KEY (`eventCategoryId`)
     REFERENCES `clinic`.`event_category` (`eventCategoryId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_event_files1`
+    FOREIGN KEY (`fileId`)
+    REFERENCES `clinic`.`files` (`fileId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -93,6 +100,23 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event_category_has_user` (
     REFERENCES `clinic`.`user` (`userId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- -----------------------------------------------------
+-- Table `clinic`.`files`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `clinic`.`files` ;
+
+CREATE TABLE IF NOT EXISTS `clinic`.`files` (
+  `fileId` INT NOT NULL,
+  `fileName` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `downloadUrl` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `fileType` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `fileSize` INT COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`fileId`),
+  UNIQUE INDEX `fileName_UNIQUE` (`fileName` ASC) VISIBLE,
+  UNIQUE INDEX `downloadUrl_UNIQUE` (`downloadUrl` ASC) VISIBLE)
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 SET SQL_MODE=@OLD_SQL_MODE;
