@@ -48,15 +48,15 @@ CREATE TABLE IF NOT EXISTS `clinic`.`event` (
   `fileId` INT NULL DEFAULT NULL,
   PRIMARY KEY (`eventId`),
   INDEX `fk_event_event-catagory_idx` (`eventCategoryId` ASC) VISIBLE,
-  INDEX `fk_event_files1_idx` (`fileId` ASC) VISIBLE,
+  INDEX `fk_event_file1_idx` (`fileId` ASC) VISIBLE,
   CONSTRAINT `fk_event_event-catagory`
     FOREIGN KEY (`eventCategoryId`)
     REFERENCES `clinic`.`event_category` (`eventCategoryId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_event_files1`
+  CONSTRAINT `fk_event_file1`
     FOREIGN KEY (`fileId`)
-    REFERENCES `clinic`.`files` (`fileId`)
+    REFERENCES `clinic`.`file` (`fileId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -104,12 +104,12 @@ ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
--- Table `clinic`.`files`
+-- Table `clinic`.`file`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `clinic`.`files` ;
+DROP TABLE IF EXISTS `clinic`.`file` ;
 
-CREATE TABLE IF NOT EXISTS `clinic`.`files` (
-  `fileId` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `clinic`.`file` (
+  `fileId` INT NOT NULL AUTO_INCREMENT,
   `fileName` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   `downloadUrl` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   `fileType` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
