@@ -100,34 +100,37 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 INSERT INTO `user` (`userId`, `name`, `email`, `password`, `role`) VALUES
-(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$qzPNwlVKGLEi0sW8+91THw$4LWq4qOLZKZR3E5eLTIVMVLojgIN8Gveqlbo0jVi6QE', 'ADMIN'),
-(2,'Somchai Jaidee','somchai.jai@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$/Qyhp40vwOKDD0GfcGMxUg$XP4JQkHXP8VNx6UBA51EfNBV7AoU/QCi1toZLuPPXrs', 'LECTURER'),
-(3,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$uHVIqes1FEASJfuVh/7OWw$AB6Ub+PNwTe46LOvnIoOW0UAXohjvo7FLy/So7BO8uE', 'STUDENT'),
-(4,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$Pb8JElWpILgqaQyh1MLlSg$bUP1VQ5qI7v6qIqqO2Le6zuV/m4Rr54rKiDk3ge9AKU', 'STUDENT'),
-(5,'Somsuk','somsuk@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$/Qyhp40vwOKDD0GfcGMxUg$XP4JQkHXP8VNx6UBA51EfNBV7AoU/QCi1toZLuPPXrs', 'LECTURER'),
-(6,'Somying','somying@kmutt.ac.th', '$argon2id$v=19$m=4096,t=3,p=1$/Qyhp40vwOKDD0GfcGMxUg$XP4JQkHXP8VNx6UBA51EfNBV7AoU/QCi1toZLuPPXrs', 'LECTURER');
-
+(1,'OASIP ADMIN','oasip.admin@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$/Zr119a3b++ddZI1BBOKtQ$7EpYrNP3k3BaZ1Zx8A8CPpXTzR6Yqg9IRRxkBnuo05Q','ADMIN'),
+(2,'Olarn Rojanapornpun','olarn.roj@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$32OE6yOH+00cX6vgd8Gsuw$QSbkLwH1fA4kO6gH/nxBbGsu/g5ByKEPXISgCEWQvwo','LECTURER'),
+(3,'Pichet Limvachiranan','pichet.limv@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$BDxMEM9uBKdJ+wQhkRcjyQ$pNmWj/K3bAUGZSj5W4SsTYvOy0hmhnO2MUKG2b4lfKU','LECTURER'),
+(4,'Umaporn Supasitthimethee','umaporn.sup@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$gop3+cxi9jvPpQ+Vldiw3g$LSvqM4O9OUorEuHIwQKLrFBQ4rReqLYZMnCjKto1uc4','LECTURER'),
+(5,'Siam Yamsaengsung','siam.yam@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$WE0zq8ky55f613WBJg+Qbg$EZo6ionM4IQ0DKnmV63harTXlL8v6rbB4+ci09ouN8c','LECTURER'),
+(6,'Sunisa Sathapornvajana','sunisa.sat@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$t1BIIAAwxTLB8D6/2uzBpA$7ekSXwL5fGqiy7OYiKZ54ISOH+FgXyJafvxLo+BrYyo','LECTURER'),
+(7,'Somchai Jaidee','somchai.jai@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$haAyDm8SRS8tntCuNS+IPg$YBxume1YCkQXFhtOUqxel2hDI/HmysbNWCT1uQe4akQ','STUDENT'),
+(8,'Komkrid Rakdee','komkrid.rak@mail.kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$N6tSpTC+BTmXmb7JoML1PQ$ROGpoUAZSALBU062csLzNdeoJNoBAWI+5FuHOJDwxbo','STUDENT'),
+(9,'สมเกียรติ ขยันเรียน','somkiat.kay@kmutt.ac.th','$argon2id$v=19$m=4096,t=3,p=1$7minHCP3LfqmBnI8e6VCyg$i1CqAWv5xpe+4fAAFTeSLXHbwX75/Sd/iEWyE0fXoTA','STUDENT');
 
 INSERT INTO `event_category` (`eventCategoryId`, `eventCategoryName`, `eventCategoryDescription`, `eventDuration`) VALUES
-(1, 'Project Management Clinic', 'ตารางนัดหมายนี้ใช้สำหรับนัดหมาย project management clinic ในวิชา INT221 integrated project I ให้นักศึกษาเตรียมเอกสารที่เกี่ยวข้องเพื่อแสดงระหว่างขอคําปรึกษา', 30),
-(2, 'DevOps/Infra Clinic', 'Use this event category for DevOps/Infra clinic.', 20),
-(3, 'Database Clinic', 'ตารางนัดหมายนี้ใช้สําหรับนัดหมาย database clinic ในวิชา INT221 integrated project I', 15),
-(4, 'Client-side Clinic', 'ตารางนัดหมายนี้ใช้สําหรับนัดหมาย client-side clinic ในวิชา INT221 integrated project I', 30),
-(5, 'Server-side Clinic', NULL, 30);
+(1,'Project Management Clinic','ตารางนัดหมายนี้ใช้สำหรับนัดหมาย project management clinic ในวิชา INT221 integrated project I ให้นักศึกษาเตรียมเอกสารที่เกี่ยวข้องเพื่อแสดงระหว่างขอคําปรึกษา',30),
+(2,'DevOps/Infra Clinic','Use this event category for DevOps/Infra clinic.',20),
+(3,'Database Clinic','ตารางนัดหมายนี้ใช้สําหรับนัดหมาย database clinic ในวิชา INT221 integrated project I',15),
+(4,'Client-side Clinic','ตารางนัดหมายนี้ใช้สําหรับนัดหมาย client-side clinic ในวิชา INT221 integrated project I',30),
+(5,'Server-side Clinic',NULL,30);
 
 INSERT INTO `event` (`eventId`, `bookingName`, `bookingEmail`, `eventStartTime`, `eventDuration`, `eventNotes`, `eventCategoryId`) VALUES
 (1, 'Somchai Jaidee(OR-7)', 'somchai.jai@mail.kmutt.ac.th', '2022-05-23 06:30:00', 30, NULL, 2),
 (2, 'SomsriRakdee(SJ-3)', 'somsri.rak@mail.kmutt.ac.th', '2022-05-27 02:30:00', 30, 'ขอปรึกษาปัญหาเพื่อนไม่ช่วยงาน', 1),
 (3, 'สมเกียรติ ขยันเรียน กลุ่ม TT-4', 'somkiat.kay@kmutt.ac.th', '2022-05-23 09:30:00', 15, NULL, 3);
 
-INSERT INTO `event_category_has_user` (`userId`, `eventCategoryId`) VALUES
-(2, 1),
-(5, 3),
-(6, 4),
-(1, 2),
-(1, 5),
-(2, 5),
-(3, 2);
+INSERT INTO `event_category_has_user` (`eventCategoryId`, `userId`) VALUES
+(1,2),
+(2,2),
+(5,2),
+(5,3),
+(4,4),
+(2,5),
+(3,6);
+
 
 create user 'root'@'%' identified by '%kBLfS@XZfQ_@p7JHq*+X+bCdvdSw^' ;
 grant all privileges on *.* to 'root'@'%' ;
