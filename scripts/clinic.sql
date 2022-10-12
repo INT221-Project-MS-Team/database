@@ -114,9 +114,7 @@ CREATE TABLE IF NOT EXISTS `clinic`.`file` (
   `downloadUrl` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   `fileType` VARCHAR(255) COLLATE utf8mb4_general_ci NOT NULL,
   `fileSize` INT COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`fileId`),
-  UNIQUE INDEX `fileName_UNIQUE` (`fileName` ASC) VISIBLE,
-  UNIQUE INDEX `downloadUrl_UNIQUE` (`downloadUrl` ASC) VISIBLE)
+  PRIMARY KEY (`fileId`))
 ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 SET SQL_MODE=@OLD_SQL_MODE;
